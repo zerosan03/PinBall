@@ -25,7 +25,6 @@ public class FripperController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetAngle(this.defaultAngle);
         //左矢印キーを押した時左フリッパーを動かす
         if (Input.GetKeyDown(KeyCode.LeftArrow) && tag == "LeftFripperTag")
         {
