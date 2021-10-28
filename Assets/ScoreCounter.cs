@@ -8,8 +8,6 @@ public class ScoreCounter : MonoBehaviour
     Material myMaterial;
     private GameObject gamescore;
     private int score=0;
-    private int degree = 0;
-    private int speed = 5;
     void Start()
     {
         this.gamescore = GameObject.Find("GameScore");
@@ -19,30 +17,27 @@ public class ScoreCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.degree > 0)
-        {
-            if (tag == "SmallStarTag")
-            {
-                score += 20;
-            }
-            else if (tag == "LargeStarTag")
-            {
-                score += 15;
-            }
-            else if (tag == "LargeCloudTag")
-            {
-                score += 5;
-            }
-            else if (tag == "SmallCloudTag")
-            {
-                score += 10;
-            }
-            this.gamescore.GetComponent<Text>().text = "score:" + score;
-            this.degree -= this.speed;
-        }
+        
     }
-    void OnCollisionEnter(Collision other)
+    void OnCollisionEnter(Collision collision)
     {
-        this.degree = 5;
+        if (collision.collider.tag == "SmallStarTag")
+        {
+            score += 20;
+        }
+        else if (collision.collider.tag == "LargeStarTag")
+        {
+            score += 15;
+        }
+        else if (collision.collider.tag == "SmallCloudTag")
+        {
+            score += 10;
+        }
+        else if (collision.collider.tag == "LargeCloudTag")
+        {
+            score += 5;
+        }
+
+        this.gamescore.GetComponent<Text>().text = "score:" + score;
     }
 }

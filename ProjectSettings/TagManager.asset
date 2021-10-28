@@ -10,6 +10,7 @@ TagManager:
   - LargeStarTag
   - SmallCloudTag
   - LargeCloudTag
+  - BallTag
   layers:
   - Default
   - TransparentFX
