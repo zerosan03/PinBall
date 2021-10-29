@@ -39,18 +39,23 @@ public class FripperController : MonoBehaviour
         {
             SetAngle(this.flickAngle);
         }
-        if (Input.touchCount>0)
+        foreach(Touch touch in Input.touches)
         {
-            a = Input.mousePosition.x;
-            if (a >= Screen.width / 2 && tag == "RightFripperTag")
+            if (Input.touchCount > 0)
             {
-                SetAngle(this.flickAngle);
-            }
-            if (a <= Screen.width / 2 && tag == "RightFripperTag")
-            {
-                SetAngle(this.flickAngle);
+                a = touch.position.x;
+                if (a >= Screen.width / 2 && tag == "RightFripperTag")
+                {
+                    SetAngle(this.flickAngle);
+                }
+                if (a <= Screen.width / 2 && tag == "LeftFripperTag")
+                {
+                    SetAngle(this.flickAngle);
+                }
             }
         }
+            
+
 
             //矢印キー離された時フリッパーを元に戻す
         if (Input.GetKeyUp(KeyCode.A) && tag == "LeftFripperTag")
@@ -71,7 +76,7 @@ public class FripperController : MonoBehaviour
             {
                 SetAngle(this.defaultAngle);
             }
-            if (a <= Screen.width / 2 && tag == "RightFripperTag")
+            if (a <= Screen.width / 2 && tag == "LeftFripperTag")
             {
                 SetAngle(this.defaultAngle);
             }
